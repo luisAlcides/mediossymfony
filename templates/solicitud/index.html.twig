@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Solicitud index{% endblock %}
+
+{% block body %}
+    <h1>Solicitud index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>FechaUso</th>
+                <th>HoraInicio</th>
+                <th>HoraFin</th>
+                <th>Estado</th>
+                <th>Datetime</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for solicitud in solicituds %}
+            <tr>
+                <td>{{ solicitud.id }}</td>
+                <td>{{ solicitud.fechaUso ? solicitud.fechaUso|date('Y-m-d') : '' }}</td>
+                <td>{{ solicitud.horaInicio ? solicitud.horaInicio|date('H:i:s') : '' }}</td>
+                <td>{{ solicitud.horaFin ? solicitud.horaFin|date('H:i:s') : '' }}</td>
+                <td>{{ solicitud.estado }}</td>
+                <td>{{ solicitud.datetime ? solicitud.datetime|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('app_solicitud_show', {'id': solicitud.id}) }}">show</a>
+                    <a href="{{ path('app_solicitud_edit', {'id': solicitud.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_solicitud_new') }}">Create new</a>
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Registro{% endblock %}
+
+{% block body %}
+    <div class="container d-flex justify-content-center align-items-center min-vh-100">
+        <div class="card p-4 shadow-sm" style="max-width: 500px; width: 100%;">
+            <h1 class="text-center mb-4">Registro</h1>
+
+            {% if form_errors(registrationForm) %}
+                <div class="alert alert-danger">
+                    {{ form_errors(registrationForm) }}
+                </div>
+            {% endif %}
+
+            {{ form_start(registrationForm) }}
+                <div class="mb-3">
+                    {{ form_row(registrationForm.email, {
+                        'attr': {'class': 'form-control'},
+                        'label_attr': {'class': 'form-label'}
+                    }) }}
+                </div>
+
+                <div class="mb-3">
+                    {{ form_row(registrationForm.plainPassword, {
+                        'label': 'Contraseña',
+                        'attr': {'class': 'form-control'},
+                        'label_attr': {'class': 'form-label'}
+                    }) }}
+                </div>
+
+                <div class="mb-3 form-check">
+                    {{ form_row(registrationForm.agreeTerms, {
+                        'attr': {'class': 'form-check-input'},
+                        'label_attr': {'class': 'form-check-label'}
+                    }) }}
+                </div>
+
+                <button type="submit" class="btn btn-primary w-100">Registrar</button>
+            {{ form_end(registrationForm) }}
+        </div>
+    </div>
+{% endblock %}

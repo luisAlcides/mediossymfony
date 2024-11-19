@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nuevo Medio{% endblock %}
+
+{% block body %}
+<div class="container mt-4">
+    <h1 class="text-center mb-4">Crear Nuevo Medio</h1>
+
+    <div class="card shadow-sm">
+        <div class="card-body">
+            {{ include('medio/_form.html.twig') }}
+        </div>
+    </div>
+
+    <div class="mt-4 text-end">
+        <a href="{{ path('app_medio_index') }}" class="btn btn-secondary">
+            <i class="bi bi-arrow-left"></i> Volver a la lista
+        </a>
+    </div>
+</div>
+{% endblock %}

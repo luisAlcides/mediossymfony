@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Solicitud{% endblock %}
+
+{% block body %}
+    <h1>Solicitud</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ solicitud.id }}</td>
+            </tr>
+            <tr>
+                <th>FechaUso</th>
+                <td>{{ solicitud.fechaUso ? solicitud.fechaUso|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>HoraInicio</th>
+                <td>{{ solicitud.horaInicio ? solicitud.horaInicio|date('H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>HoraFin</th>
+                <td>{{ solicitud.horaFin ? solicitud.horaFin|date('H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Estado</th>
+                <td>{{ solicitud.estado }}</td>
+            </tr>
+            <tr>
+                <th>Datetime</th>
+                <td>{{ solicitud.datetime ? solicitud.datetime|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_solicitud_index') }}">back to list</a>
+
+    <a href="{{ path('app_solicitud_edit', {'id': solicitud.id}) }}">edit</a>
+
+    {{ include('solicitud/_delete_form.html.twig') }}
+{% endblock %}

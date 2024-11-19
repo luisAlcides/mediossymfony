@@ -1,0 +1,4 @@
+{
+    "controllers": ["StimulusController"],
+    "entrypoints": []
+}

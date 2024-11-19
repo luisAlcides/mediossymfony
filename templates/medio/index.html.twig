@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Listado de Medios{% endblock %}
+
+{% block body %}
+<div class="container mt-4">
+    <h1 class="text-center mb-4">Listado de Medios</h1>
+
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover">
+            <thead class="table-dark">
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Descripción</th>
+                    <th scope="col">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for medio in medios %}
+                <tr>
+                    <td>{{ medio.id }}</td>
+                    <td>{{ medio.nombre }}</td>
+                    <td>{{ medio.descripcion }}</td>
+                    <td>
+                        <a href="{{ path('app_medio_show', {'id': medio.id}) }}" class="btn btn-sm btn-info me-2">
+                            <i class="bi bi-eye"></i> Ver
+                        </a>
+                        <a href="{{ path('app_medio_edit', {'id': medio.id}) }}" class="btn btn-sm btn-warning">
+                            <i class="bi bi-pencil"></i> Editar
+                        </a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="4" class="text-center">No se encontraron registros</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div class="text-end">
+        <a href="{{ path('app_medio_new') }}" class="btn btn-success">
+            <i class="bi bi-plus-circle"></i> Crear Nuevo
+        </a>
+    </div>
+</div>
+{% endblock %}
